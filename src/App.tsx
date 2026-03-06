@@ -40,11 +40,11 @@ import HeroImg from './Images/Hero.png';
 import HeroBG from './Images/herobg.png';
 
 // --- Constants ---
-const CLINIC_PHONE = "094239 74675";
-const CLINIC_ADDRESS = "28, Meenataaee Thakre Complex, Opp. Saint Joseph School, Omkaareshwar Mandir Road, Jalgaon, Maharashtra 425002";
-const MAP_LINK = "https://www.google.com/maps/search/?api=1&query=Om+Dental+Clinic+28+Meenataaee+Thakre+Complex+Jalgaon";
-const WHATSAPP_LINK = "https://wa.me/919423974675";
-const CLINIC_EMAIL = "omdentaljalgaon@gmail.com";
+const CLINIC_PHONE = "081697 23702";
+const CLINIC_ADDRESS = "shop no 2, Om Shiv Complex, Ghodbunder Rd, beside R Mall, opp. Dosti Imperia, Manpada, Thane West, Thane, Maharashtra 400607";
+const MAP_LINK = "https://www.google.com/maps/search/?api=1&query=Om+Dental+Clinic+Om+Shiv+Complex+Ghodbunder+Rd+Manpada+Thane+West";
+const WHATSAPP_LINK = "https://wa.me/918169723702";
+const CLINIC_EMAIL = "omdentalthane@gmail.com";
 
 // --- Icons ---
 const WhatsAppIcon = ({ size = 24, className = "" }) => (
@@ -241,7 +241,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-600 mb-14 leading-relaxed font-medium max-w-2xl mx-auto lg:mx-0">
-              Where 18 years of clinical mastery meets the art of dentistry. Experience world-class care in the heart of Jalgaon.
+              Where 18 years of clinical mastery meets the art of dentistry. Experience world-class care in the heart of Thane.
             </p>
 
             {/* Call to Actions */}
@@ -338,7 +338,7 @@ const About = () => {
           >
             <span className="text-blue-600 font-extrabold tracking-[0.3em] uppercase text-xs mb-6 block px-4 py-2 bg-blue-100 inline-block rounded-full">About Om Dental</span>
             <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-10 leading-[1.1] tracking-tighter">
-              World Class Care In <span className="text-blue-600">Jalgaon</span>
+              World Class Care In <span className="text-blue-600">Thane</span>
             </h2>
             <p className="text-xl text-slate-500 mb-10 leading-relaxed font-medium">
               At Om Dental Clinic, we combine 18+ years of expertise with state-of-the-art technology to provide you with the most comfortable dental experience possible.
@@ -484,7 +484,7 @@ const WhyChooseUs = () => {
           <div className="lg:w-1/3">
             <h2 className="text-5xl md:text-6xl font-black mb-8 leading-tight tracking-tighter">Why People <br /> Trust Om Dental?</h2>
             <p className="text-blue-100 text-lg mb-10 font-medium">
-              We combine advanced clinical expertise with genuine compassion to deliver an unmatched dental experience in Jalgaon.
+              We combine advanced clinical expertise with genuine compassion to deliver an unmatched dental experience in Thane.
             </p>
             <a href="#appointment" className="inline-flex items-center gap-2 bg-white text-blue-600 px-10 py-5 rounded-[2rem] font-bold hover:bg-blue-50 transition-all shadow-2xl active:scale-95">
               Book Your Visit <ArrowRight size={20} />
@@ -519,7 +519,7 @@ const MeetTheDoctor = () => {
     qual: 'Dental Surgeon',
     exp: '18+ Years Clinical Experience',
     spec: 'Oral Health & Surgery',
-    bio: 'Dr. Hemangi is a highly respected Dental Surgeon in Jalgaon, known for her precision and patient-centric approach. With nearly two decades of experience, she has transformed thousands of smiles using the latest clinical techniques.',
+    bio: 'Dr. Hemangi is a highly respected Dental Surgeon in Thane, known for her precision and patient-centric approach. With nearly two decades of experience, she has transformed thousands of smiles using the latest clinical techniques.',
     img: DoctorImg
   };
 
@@ -600,7 +600,7 @@ const Testimonials = () => {
     {
       name: 'Rahul More',
       role: 'Professional',
-      text: 'Best dental clinic in Jalgaon. Very transparent with pricing and treatment options. Highly professional team.',
+      text: 'Best dental clinic in Thane. Very transparent with pricing and treatment options. Highly professional team.',
       rating: 5
     },
     {
@@ -752,7 +752,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
             <span className="text-blue-600 font-extrabold tracking-[0.3em] uppercase text-xs mb-6 block">Location</span>
-            <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-12 tracking-tighter text-balance">Visit Our <br /> Clinic In Jalgaon.</h2>
+            <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-12 tracking-tighter text-balance">Visit Our <br /> Clinic In Thane.</h2>
 
             <div className="space-y-12">
               <div className="flex items-start gap-8">
@@ -781,9 +781,9 @@ const Contact = () => {
                 <div>
                   <h4 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">Clinic Hours</h4>
                   <div className="space-y-2">
-                    <p className="text-slate-500 text-xl font-medium"><span className="text-blue-600 font-black">Mon - Sat:</span> 09:30 AM - 01:30 PM</p>
-                    <p className="text-slate-500 text-xl font-medium ml-[6.5rem]">05:30 PM - 09:30 PM</p>
-                    <p className="text-slate-500 text-xl font-medium pt-2"><span className="text-slate-400 font-black">Sunday:</span> 10:00 AM - 02:00 PM (Emergency Only)</p>
+                    <p className="text-slate-500 text-xl font-medium"><span className="text-blue-600 font-black">Mon - Sat:</span> 10:00 AM - 01:00 PM</p>
+                    <p className="text-slate-500 text-xl font-medium ml-[6.5rem]">05:00 PM - 08:00 PM</p>
+                    <p className="text-slate-500 text-xl font-medium pt-2"><span className="text-slate-400 font-black">Sunday:</span> Closed</p>
                   </div>
                 </div>
               </div>
@@ -792,7 +792,7 @@ const Contact = () => {
 
           <div className="h-[600px] rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white relative group bg-blue-50">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.104443422671!2d75.5621453752533!3d21.006930880637736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd90fb4f2f65f17%3A0x8f7d9c6c40e5362!2sSaint%20Joseph%20Convent%20School!5e0!3m2!1sen!2sin!4v1741271821000!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Om+Shiv+Complex,+Ghodbunder+Rd,+Manpada,+Thane+West,+Thane,+Maharashtra+400607&zoom=16"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -836,7 +836,7 @@ const Footer = () => {
           </div>
           <div className="flex items-center gap-3">
             <MapPin size={20} className="text-blue-600" />
-            <span className="text-slate-400 font-bold text-sm tracking-tight">Jalgaon, Maharashtra</span>
+            <span className="text-slate-400 font-bold text-sm tracking-tight">Thane, Maharashtra</span>
           </div>
         </div>
 
