@@ -103,6 +103,16 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
   const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About Us', href: '#about' },
@@ -112,6 +122,19 @@ const Navbar = () => {
     { name: 'Gallery', href: '#gallery' },
     { name: 'Contact', href: '#contact' },
   ];
+
+  const handleMobileNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsOpen(false);
+    // Small delay to let the menu close before scrolling
+    setTimeout(() => {
+      const targetId = href.replace('#', '');
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 300);
+  };
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-3' : 'bg-transparent py-5'}`}>
@@ -151,7 +174,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-md ${scrolled ? 'text-slate-600' : 'text-slate-900'}`}
+              className={`p-2 rounded-md relative z-[60] ${isOpen ? 'text-slate-600' : scrolled ? 'text-slate-600' : 'text-slate-900'}`}
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -159,34 +182,56 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Full screen overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-b border-slate-100 overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="md:hidden fixed inset-0 top-0 left-0 w-full h-full bg-white z-[55] flex flex-col"
           >
-            <div className="px-4 pt-2 pb-6 space-y-1 sm:px-3">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block px-3 py-3 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
-              <div className="pt-4">
+            {/* Spacer for the navbar area */}
+            <div className="h-20"></div>
+
+            <div className="flex-1 flex flex-col justify-center px-8 -mt-10">
+              <div className="space-y-2">
+                {navLinks.map((link, i) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => handleMobileNavClick(e, link.href)}
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 + 0.1 }}
+                    className="block px-4 py-4 text-2xl font-black text-slate-800 hover:text-blue-600 hover:bg-blue-50 rounded-2xl transition-colors tracking-tight"
+                  >
+                    {link.name}
+                  </motion.a>
+                ))}
+              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="mt-8 px-4"
+              >
                 <a
                   href="#appointment"
-                  onClick={() => setIsOpen(false)}
-                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-xl text-base font-semibold hover:bg-blue-700 transition-all flex items-center justify-center gap-2"
+                  onClick={(e) => handleMobileNavClick(e, '#appointment')}
+                  className="w-full bg-blue-600 text-white px-8 py-5 rounded-2xl text-lg font-bold hover:bg-blue-700 transition-all flex items-center justify-center gap-3 shadow-xl shadow-blue-500/20"
                 >
-                  <WhatsAppIcon size={20} /> Book Visit
+                  <WhatsAppIcon size={24} /> Book Visit
                 </a>
+              </motion.div>
+            </div>
+
+            {/* Mobile menu footer */}
+            <div className="px-8 pb-10">
+              <div className="flex items-center gap-3 text-slate-400 text-sm font-medium">
+                <Phone size={16} />
+                <span>{CLINIC_PHONE}</span>
               </div>
             </div>
           </motion.div>
@@ -792,7 +837,7 @@ const Contact = () => {
 
           <div className="h-[600px] rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white relative group bg-blue-50">
             <iframe
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Om+Shiv+Complex,+Ghodbunder+Rd,+Manpada,+Thane+West,+Thane,+Maharashtra+400607&zoom=16"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.3!2d72.9571!3d19.2183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8fcb8b756e3%3A0x8c6b8e0e8c88ef93!2sOm%20Dental%20Clinic!5e0!3m2!1sen!2sin!4v1709700000000!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
