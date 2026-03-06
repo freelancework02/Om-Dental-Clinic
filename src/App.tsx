@@ -4,15 +4,15 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { 
-  Menu, 
-  X, 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  CheckCircle2, 
-  Star, 
+import {
+  Menu,
+  X,
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  CheckCircle2,
+  Star,
   ChevronRight,
   Stethoscope,
   Smile,
@@ -24,42 +24,69 @@ import {
   Facebook,
   Twitter,
   Linkedin,
-  MessageCircle
+  MessageCircle,
+  ArrowRight
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
+// --- Images ---
+import DoctorImg from './Images/Doctor.jpeg';
+import TreatmentImg from './Images/Treatment offer.jpeg';
+import RoomFrontImg from './Images/roomfrontview.jpeg';
+import RoomUnderImg from './Images/roomunderview.jpeg';
+import RoomUnder2Img from './Images/roomunderview2.jpeg';
+import VisitingCardImg from './Images/visitingcard.jpeg';
+import HeroImg from './Images/Hero.png';
+import HeroBG from './Images/herobg.png';
+
 // --- Constants ---
-const CLINIC_PHONE = "081697 23702";
-const CLINIC_ADDRESS = "2, Om Shiv Complex, Ghodbunder Rd, beside R Mall, opp. Dosti Imperia, Manpada, Thane West, Thane, Maharashtra 400607";
-const MAP_LINK = "https://www.google.com/maps/search/?api=1&query=Om+Dental+Clinic+Thane+West";
-const WHATSAPP_LINK = "https://wa.me/918169723702";
+const CLINIC_PHONE = "094239 74675";
+const CLINIC_ADDRESS = "28, Meenataaee Thakre Complex, Opp. Saint Joseph School, Omkaareshwar Mandir Road, Jalgaon, Maharashtra 425002";
+const MAP_LINK = "https://www.google.com/maps/search/?api=1&query=Om+Dental+Clinic+28+Meenataaee+Thakre+Complex+Jalgaon";
+const WHATSAPP_LINK = "https://wa.me/919423974675";
+const CLINIC_EMAIL = "omdentaljalgaon@gmail.com";
+
+// --- Icons ---
+const WhatsAppIcon = ({ size = 24, className = "" }) => (
+  <svg
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.87 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+  </svg>
+);
 
 // --- Components ---
 
 const WhatsAppButton = () => (
   <div className="fixed bottom-8 right-8 z-50 flex flex-col items-end gap-2 group">
     <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      className="bg-white px-4 py-2 rounded-xl shadow-xl text-slate-900 text-sm font-bold border border-slate-100 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none mb-1"
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileHover={{ opacity: 1, scale: 1 }}
+      className="bg-white px-4 py-2 rounded-xl shadow-xl text-slate-900 text-sm font-bold border border-blue-100 opacity-0 group-hover:opacity-100 transition-all pointer-events-none mb-1 flex items-center gap-2"
     >
+      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
       Chat with us!
     </motion.div>
     <motion.a
       href={WHATSAPP_LINK}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      whileHover={{ scale: 1.1 }}
-      className="relative bg-[#25D366] text-white p-4 rounded-full shadow-2xl flex items-center justify-center hover:bg-[#128C7E] transition-all"
+      initial={{ scale: 0, rotate: -180 }}
+      animate={{ scale: 1, rotate: 0 }}
+      whileHover={{ scale: 1.15, rotate: 10 }}
+      className="relative bg-[#25D366] text-white p-4 rounded-2xl shadow-2xl flex items-center justify-center hover:bg-[#128C7E] transition-all overflow-hidden"
     >
       <motion.div
-        animate={{ scale: [1, 1.2, 1] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute inset-0 bg-[#25D366] rounded-full -z-10 opacity-50"
+        animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.1, 0.3] }}
+        transition={{ duration: 3, repeat: Infinity }}
+        className="absolute inset-0 bg-white rounded-full -z-10"
       />
-      <MessageCircle size={32} fill="currentColor" />
+      <WhatsAppIcon size={32} />
     </motion.a>
   </div>
 );
@@ -87,15 +114,18 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-3' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex-shrink-0 flex items-center">
-            <span className={`text-2xl font-bold tracking-tight ${scrolled ? 'text-teal-600' : 'text-white'}`}>
-              Om <span className={scrolled ? 'text-slate-800' : 'text-teal-200'}>Dental Clinic</span>
+          <div className="flex-shrink-0 flex items-center group cursor-pointer">
+            <div className={`w-10 h-10 rounded-xl flex items-center justify-center mr-3 transition-colors ${scrolled ? 'bg-blue-600 text-white' : 'bg-slate-900 text-white'}`}>
+              <Smile size={24} />
+            </div>
+            <span className={`text-2xl font-black tracking-tighter ${scrolled ? 'text-blue-600' : 'text-slate-900'}`}>
+              OM<span className={scrolled ? 'text-slate-900' : 'text-blue-600'}>DENTAL</span>
             </span>
           </div>
-          
+
           {/* Desktop Menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
@@ -103,25 +133,25 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-teal-500 ${scrolled ? 'text-slate-600' : 'text-white'}`}
+                  className={`text-sm font-bold tracking-wide transition-all hover:text-blue-500 relative group overflow-hidden ${scrolled ? 'text-slate-600' : 'text-slate-900'}`}
                 >
                   {link.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
                 </a>
               ))}
               <a
                 href="#appointment"
-                className="bg-teal-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-teal-700 transition-all shadow-lg hover:shadow-teal-200"
+                className="bg-blue-600 text-white px-8 py-3 rounded-2xl text-sm font-bold hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20 active:scale-95 flex items-center gap-2"
               >
-                Book Appointment
+                <WhatsAppIcon size={18} /> Book Visit
               </a>
             </div>
           </div>
 
-          {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-md ${scrolled ? 'text-slate-600' : 'text-white'}`}
+              className={`p-2 rounded-md ${scrolled ? 'text-slate-600' : 'text-slate-900'}`}
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -144,7 +174,7 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-3 text-base font-medium text-slate-700 hover:text-teal-600 hover:bg-slate-50 rounded-lg transition-colors"
+                  className="block px-3 py-3 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-lg transition-colors"
                 >
                   {link.name}
                 </a>
@@ -153,9 +183,9 @@ const Navbar = () => {
                 <a
                   href="#appointment"
                   onClick={() => setIsOpen(false)}
-                  className="block w-full text-center bg-teal-600 text-white px-6 py-3 rounded-xl text-base font-semibold hover:bg-teal-700 transition-all"
+                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-xl text-base font-semibold hover:bg-blue-700 transition-all flex items-center justify-center gap-2"
                 >
-                  Book Appointment
+                  <WhatsAppIcon size={20} /> Book Visit
                 </a>
               </div>
             </div>
@@ -168,147 +198,172 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-slate-900">
-      {/* Background Image with Parallax-like effect */}
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-white">
+      {/* Prime Background Image - Precisely positioned to show the doctor */}
       <div className="absolute inset-0 z-0">
-        <motion.img
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 10, repeat: Infinity, repeatType: "reverse" }}
-          src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=2070"
-          alt="Dental Clinic"
-          className="w-full h-full object-cover opacity-60"
-          referrerPolicy="no-referrer"
+        <img
+          src={HeroBG}
+          alt="Dr. Hemangi at Om Dental Clinic"
+          className="w-full h-full object-cover object-[25%] lg:object-left-top scale-110 lg:scale-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/60 to-slate-900"></div>
+        {/* Advanced Gradient System: Protects the doctor on the left, ensures text readability on the right */}
+        <div className="absolute inset-0 bg-gradient-to-l from-white via-white/80 to-transparent lg:block hidden"></div>
+        <div className="absolute inset-0 bg-white/85 lg:hidden block"></div>
+
+        {/* Subtle Brand Accents */}
+        <div className="absolute top-0 right-0 w-[50%] h-full bg-blue-50/30 blur-[120px] lg:block hidden"></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-        <div className="flex flex-col items-center text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-0 w-full">
+        <div className="flex justify-end">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl"
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="w-full lg:w-[55%] text-center lg:text-left"
           >
-            <span className="inline-block px-4 py-1.5 mb-8 text-sm font-bold tracking-[0.2em] text-teal-400 uppercase bg-teal-400/10 rounded-full border border-teal-400/20 backdrop-blur-sm">
-              Welcome to Om Dental Clinic
-            </span>
-            <h1 className="text-5xl md:text-8xl font-bold text-white mb-8 leading-[1.05] tracking-tight text-balance">
-              Your Smile, <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">Our Priority</span>
+            {/* Premium Status Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-3 px-5 py-2 mb-10 bg-white/90 backdrop-blur-md border border-blue-100 rounded-full shadow-sm"
+            >
+              <span className="flex h-2.5 w-2.5 rounded-full bg-blue-600 animate-pulse"></span>
+              <span className="text-blue-600 text-[10px] font-black uppercase tracking-[0.3em]">Advanced Clinical Excellence</span>
+            </motion.div>
+
+            {/* High-Impact Headline */}
+            <h1 className="text-6xl md:text-8xl lg:text-[7rem] font-black text-slate-900 mb-8 leading-[0.95] tracking-tighter">
+              A Masterpiece <br className="hidden lg:block" />
+              Selection for <br />
+              <span className="text-blue-600 italic">Your Smile.</span>
             </h1>
-            <p className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed max-w-2xl mx-auto text-balance">
-              Experience world-class dental care with cutting-edge technology and a dedicated specialist committed to your oral health.
+
+            <p className="text-xl md:text-2xl text-slate-600 mb-14 leading-relaxed font-medium max-w-2xl mx-auto lg:mx-0">
+              Where 18 years of clinical mastery meets the art of dentistry. Experience world-class care in the heart of Jalgaon.
             </p>
-            <div className="flex flex-col sm:row items-center justify-center gap-6">
-              <a
+
+            {/* Call to Actions */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+              <motion.a
+                whileHover={{ scale: 1.05, translateY: -5 }}
+                whileTap={{ scale: 0.95 }}
                 href="#appointment"
-                className="group relative px-10 py-5 bg-teal-600 text-white rounded-full font-bold text-lg hover:bg-teal-700 transition-all shadow-2xl shadow-teal-500/20 flex items-center gap-3 overflow-hidden"
+                className="w-full sm:w-auto px-12 py-6 bg-blue-600 text-white rounded-[2.5rem] font-black text-xl hover:bg-blue-700 transition-all shadow-2xl shadow-blue-500/30 flex items-center justify-center gap-4"
               >
-                <span className="relative z-10">Book Appointment</span>
-                <ChevronRight size={22} className="relative z-10 group-hover:translate-x-1 transition-transform" />
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-500 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </a>
-              <a
+                Book Visit
+                <ArrowRight size={24} />
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05, backgroundColor: "white" }}
+                whileTap={{ scale: 0.95 }}
                 href="#services"
-                className="px-10 py-5 bg-white/5 backdrop-blur-md text-white border border-white/10 rounded-full font-bold text-lg hover:bg-white/10 transition-all flex items-center justify-center"
+                className="w-full sm:w-auto px-12 py-6 bg-white/60 backdrop-blur-md text-slate-900 border-2 border-slate-200 rounded-[2.5rem] font-black text-xl transition-all flex items-center justify-center"
               >
                 Explore Services
-              </a>
+              </motion.a>
+            </div>
+
+            {/* Trust Badges */}
+            <div className="mt-20 flex flex-wrap items-center justify-center lg:justify-start gap-12 border-t border-slate-200/50 pt-12">
+              <div className="flex flex-col">
+                <span className="text-4xl font-black text-slate-900">18+</span>
+                <span className="text-slate-400 text-[10px] font-black uppercase tracking-widest mt-1">Years Clinical Exp</span>
+              </div>
+              <div className="hidden md:block w-px h-12 bg-slate-200"></div>
+              <div className="flex flex-col">
+                <span className="text-4xl font-black text-slate-900">10k+</span>
+                <span className="text-slate-400 text-[10px] font-black uppercase tracking-widest mt-1">Healthy Smiles</span>
+              </div>
+              <div className="hidden md:block w-px h-12 bg-slate-200"></div>
+              <div className="flex items-center gap-4 p-4 bg-blue-50/50 rounded-3xl border border-blue-100/50">
+                <ShieldCheck className="text-blue-600" size={32} />
+                <div>
+                  <p className="text-slate-900 font-black text-lg leading-none">ISO 9001</p>
+                  <p className="text-slate-400 text-[10px] font-black uppercase tracking-widest">Certified Sterile</p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Floating Elements for visual interest */}
-      <div className="absolute top-1/4 left-10 w-64 h-64 bg-teal-500/10 rounded-full blur-[100px] animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse delay-1000"></div>
-
-      {/* Stats Overlay - Refined */}
-      <div className="absolute bottom-0 left-0 w-full bg-slate-900/50 backdrop-blur-xl border-t border-white/5 hidden lg:block">
-        <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-4 gap-12">
-          {[
-            { label: 'Happy Patients', value: '10,000+' },
-            { label: 'Years Experience', value: '18+' },
-            { label: 'Specialist Care', value: 'Expert' },
-            { label: 'Success Rate', value: '99.9%' },
-          ].map((stat, i) => (
-            <div key={i} className="text-center group">
-              <p className="text-4xl font-bold text-white mb-1 group-hover:text-teal-400 transition-colors">{stat.value}</p>
-              <p className="text-slate-400 text-xs font-bold uppercase tracking-[0.2em]">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* Visual Scroll Down Hint */}
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2"
+      >
+        <div className="w-[1px] h-12 bg-gradient-to-b from-blue-600 to-transparent"></div>
+      </motion.div>
     </section>
   );
 };
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-white overflow-hidden">
+    <section id="about" className="py-32 bg-blue-50/50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
-          <motion.div 
+        <div className="flex flex-col lg:flex-row items-center gap-20">
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:w-1/2 relative"
           >
-            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
               <img
-                src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=1000"
-                alt="Dental Clinic Interior"
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
+                src={RoomUnder2Img}
+                alt="Our Treatment Room"
+                className="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-1000"
               />
             </div>
-            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-teal-50 rounded-full -z-0"></div>
-            <div className="absolute -top-8 -left-8 w-32 h-32 bg-teal-600/10 rounded-full -z-0"></div>
-            
-            <div className="absolute bottom-10 left-10 bg-white p-6 rounded-2xl shadow-xl z-20 max-w-xs hidden sm:block">
-              <div className="flex items-center gap-4 mb-2">
-                <div className="bg-teal-100 p-2 rounded-lg text-teal-600">
-                  <ShieldCheck size={24} />
-                </div>
-                <p className="font-bold text-slate-800">ISO Certified Clinic</p>
+            <div className="absolute -bottom-12 -right-12 w-80 h-80 bg-blue-100 rounded-full -z-0 blur-3xl opacity-50"></div>
+
+            <div className="absolute -top-10 -right-10 bg-white p-8 rounded-[2.5rem] shadow-2xl z-20 max-w-[200px] border border-blue-50">
+              <div className="bg-blue-600 text-white w-12 h-12 rounded-2xl flex items-center justify-center mb-4">
+                <ShieldCheck size={28} />
               </div>
-              <p className="text-sm text-slate-500">We follow international standards for hygiene and safety.</p>
+              <p className="font-extrabold text-slate-900 text-lg leading-tight mb-2">Modern Clinic</p>
+              <p className="text-sm text-slate-400 font-medium">Safe & Sterile Environment</p>
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:w-1/2"
           >
-            <span className="text-teal-600 font-bold tracking-widest uppercase text-sm mb-4 block">About Our Clinic</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 leading-tight">
-              A Legacy of Excellence in <span className="text-teal-600">Dental Care</span>
+            <span className="text-blue-600 font-extrabold tracking-[0.3em] uppercase text-xs mb-6 block px-4 py-2 bg-blue-100 inline-block rounded-full">About Om Dental</span>
+            <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-10 leading-[1.1] tracking-tighter">
+              World Class Care In <span className="text-blue-600">Jalgaon</span>
             </h2>
-            <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              At Om Dental Clinic, we believe that everyone deserves a healthy, beautiful smile. Our clinic is equipped with the latest dental technology to provide pain-free and efficient treatments.
+            <p className="text-xl text-slate-500 mb-10 leading-relaxed font-medium">
+              At Om Dental Clinic, we combine 18+ years of expertise with state-of-the-art technology to provide you with the most comfortable dental experience possible.
             </p>
-            <div className="space-y-6 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
               {[
-                'Highly experienced dental specialist',
-                'State-of-the-art diagnostic and treatment equipment',
-                'Strict sterilization protocols for patient safety',
-                'Personalized treatment plans for every patient'
+                { title: 'Specialist Care', desc: 'Expert Oral Surgeon' },
+                { title: 'Digital X-Rays', desc: 'Low Radiation Imaging' },
+                { title: 'Sterilized Tools', desc: 'ISO Standard Safety' },
+                { title: 'Pain Free', desc: 'Gentle Treatment' }
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="mt-1 bg-teal-100 text-teal-600 rounded-full p-1">
-                    <CheckCircle2 size={18} />
+                <div key={i} className="flex items-center gap-4 bg-white p-4 rounded-2xl border border-blue-50 shadow-sm">
+                  <div className="bg-blue-50 text-blue-600 rounded-xl p-2">
+                    <CheckCircle2 size={24} />
                   </div>
-                  <p className="text-slate-700 font-medium">{item}</p>
+                  <div>
+                    <p className="text-slate-900 font-bold text-sm leading-tight">{item.title}</p>
+                    <p className="text-slate-400 text-xs font-medium">{item.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
-            <button className="px-8 py-4 bg-slate-900 text-white rounded-full font-bold hover:bg-slate-800 transition-all">
-              Discover Our Story
-            </button>
+            <a href="#services" className="inline-flex items-center gap-3 px-10 py-5 bg-slate-900 text-white rounded-3xl font-bold hover:bg-blue-600 transition-all shadow-xl active:scale-95">
+              Explore Our Services
+            </a>
           </motion.div>
         </div>
       </div>
@@ -328,19 +383,19 @@ const Services = () => {
       title: 'Teeth Cleaning',
       desc: 'Professional scaling and polishing to keep your gums healthy and breath fresh.',
       icon: <Smile size={32} />,
-      color: 'bg-teal-50 text-teal-600'
+      color: 'bg-indigo-50 text-indigo-600'
     },
     {
       title: 'Dental Implants',
       desc: 'Permanent and natural-looking solutions for missing teeth.',
       icon: <ShieldCheck size={32} />,
-      color: 'bg-indigo-50 text-indigo-600'
+      color: 'bg-blue-900 text-white'
     },
     {
-      title: 'Root Canal Treatment',
+      title: 'Root Canal',
       desc: 'Advanced endodontic procedures to save your natural teeth.',
       icon: <Zap size={32} />,
-      color: 'bg-orange-50 text-orange-600'
+      color: 'bg-amber-50 text-amber-600'
     },
     {
       title: 'Cosmetic Dentistry',
@@ -352,24 +407,18 @@ const Services = () => {
       title: 'Teeth Whitening',
       desc: 'Safe and effective professional whitening for a brighter smile.',
       icon: <Zap size={32} />,
-      color: 'bg-yellow-50 text-yellow-600'
-    },
-    {
-      title: 'Orthodontics',
-      desc: 'Traditional braces and clear aligners to straighten your teeth.',
-      icon: <Users size={32} />,
-      color: 'bg-purple-50 text-purple-600'
+      color: 'bg-blue-100 text-blue-700'
     }
   ];
 
   return (
-    <section id="services" className="py-24 bg-slate-50">
+    <section id="services" className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-teal-600 font-bold tracking-widest uppercase text-sm mb-4 block">Our Services</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Comprehensive Dental Care</h2>
-          <p className="text-lg text-slate-600">
-            We offer a wide range of dental services to meet all your oral health needs under one roof.
+        <div className="text-center max-w-2xl mx-auto mb-20">
+          <span className="text-blue-600 font-extrabold tracking-[0.3em] uppercase text-xs mb-6 block">Premium Services</span>
+          <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-8 tracking-tighter">Your Oral Health, <br /> Our Commitment</h2>
+          <p className="text-lg text-slate-500 font-medium">
+            We provide specialized dental care using the latest technological advancements in dentistry.
           </p>
         </div>
 
@@ -381,17 +430,17 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-slate-100 group"
+              className="bg-blue-50/30 p-10 rounded-[3rem] shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 transition-all border border-blue-100 group hover:-translate-y-2 duration-500"
             >
-              <div className={`${service.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+              <div className={`${service.color} w-20 h-20 rounded-[2rem] flex items-center justify-center mb-8 group-hover:rotate-6 transition-transform duration-500 shadow-lg`}>
                 {service.icon}
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">{service.title}</h3>
-              <p className="text-slate-600 leading-relaxed mb-6">
+              <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">{service.title}</h3>
+              <p className="text-slate-500 font-medium leading-relaxed mb-8">
                 {service.desc}
               </p>
-              <a href="#appointment" className="text-teal-600 font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                Learn More <ChevronRight size={18} />
+              <a href="#appointment" className="text-blue-600 font-extrabold flex items-center gap-2 group/btn">
+                Book Visit <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
               </a>
             </motion.div>
           ))}
@@ -404,62 +453,57 @@ const Services = () => {
 const WhyChooseUs = () => {
   const reasons = [
     {
-      title: 'Expert Specialist',
-      desc: 'Led by a specialist with over 18 years of clinical experience.',
+      title: '18+ Years Experience',
+      desc: 'Expertise you can trust with a proven track record of successful dental procedures.',
       icon: <Users size={24} />
     },
     {
       title: 'Modern Equipment',
-      desc: 'We use the latest digital X-rays and laser technology.',
+      desc: 'Advanced digital imaging and laser technology for precise diagnosis and treatment.',
       icon: <Zap size={24} />
     },
     {
-      title: 'Comfortable Treatment',
-      desc: 'Sedation options and a relaxing environment for anxiety-free care.',
+      title: 'Gentle Care',
+      desc: 'We prioritize patient comfort with sedation options and a relaxing clinic environment.',
       icon: <Smile size={24} />
     },
     {
-      title: 'Affordable Care',
-      desc: 'Transparent pricing and flexible payment plans for everyone.',
-      icon: <ShieldCheck size={24} />
-    },
-    {
-      title: 'Emergency Services',
-      desc: 'Prompt support for urgent dental issues and pain relief.',
+      title: 'Emergency Ready',
+      desc: 'Quick support for urgent dental issues to provide immediate pain relief.',
       icon: <Clock size={24} />
     }
   ];
 
   return (
-    <section className="py-24 bg-teal-600 text-white overflow-hidden relative">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -mr-20 -mt-20"></div>
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full -ml-20 -mb-20"></div>
+    <section className="py-32 bg-blue-600 text-white overflow-hidden relative">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full -ml-20 -mb-20 blur-2xl"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+        <div className="flex flex-col lg:flex-row gap-20 items-center">
           <div className="lg:w-1/3">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Why Choose Om Dental?</h2>
-            <p className="text-teal-100 text-lg mb-8">
-              We combine expertise with empathy to provide a dental experience that is as pleasant as it is effective.
+            <h2 className="text-5xl md:text-6xl font-black mb-8 leading-tight tracking-tighter">Why People <br /> Trust Om Dental?</h2>
+            <p className="text-blue-100 text-lg mb-10 font-medium">
+              We combine advanced clinical expertise with genuine compassion to deliver an unmatched dental experience in Jalgaon.
             </p>
-            <a href="#appointment" className="inline-block bg-white text-teal-600 px-8 py-4 rounded-full font-bold hover:bg-teal-50 transition-all shadow-lg">
-              Book Your Visit
+            <a href="#appointment" className="inline-flex items-center gap-2 bg-white text-blue-600 px-10 py-5 rounded-[2rem] font-bold hover:bg-blue-50 transition-all shadow-2xl active:scale-95">
+              Book Your Visit <ArrowRight size={20} />
             </a>
           </div>
           <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-8">
             {reasons.map((reason, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10"
+                className="bg-white/10 backdrop-blur-xl p-10 rounded-[3rem] border border-white/10 hover:bg-white/15 transition-colors group"
               >
-                <div className="bg-white text-teal-600 w-12 h-12 rounded-xl flex items-center justify-center mb-6">
+                <div className="bg-white text-blue-600 w-14 h-14 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
                   {reason.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-3">{reason.title}</h3>
-                <p className="text-teal-100 leading-relaxed">{reason.desc}</p>
+                <h3 className="text-2xl font-black mb-4 tracking-tight">{reason.title}</h3>
+                <p className="text-blue-100 font-medium leading-relaxed">{reason.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -471,70 +515,69 @@ const WhyChooseUs = () => {
 
 const MeetTheDoctor = () => {
   const doctor = {
-    name: 'Dr. Sameer',
-    qual: 'MDS, Oral & Maxillofacial Surgery',
-    exp: '18 Years Experience',
-    spec: 'Implantologist & Senior Surgeon',
-    bio: 'Dr. Sameer is a highly skilled dental surgeon with extensive experience in complex oral procedures and implantology. He is dedicated to providing personalized care and ensuring the best outcomes for every patient.',
-    img: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=800'
+    name: 'Dr. Hemangi',
+    qual: 'Dental Surgeon',
+    exp: '18+ Years Clinical Experience',
+    spec: 'Oral Health & Surgery',
+    bio: 'Dr. Hemangi is a highly respected Dental Surgeon in Jalgaon, known for her precision and patient-centric approach. With nearly two decades of experience, she has transformed thousands of smiles using the latest clinical techniques.',
+    img: DoctorImg
   };
 
   return (
-    <section id="doctor" className="py-24 bg-white">
+    <section id="doctor" className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-teal-600 font-bold tracking-widest uppercase text-sm mb-4 block">Meet the Expert</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Our Lead Specialist</h2>
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <span className="text-blue-600 font-extrabold tracking-[0.3em] uppercase text-xs mb-6 block">Our Expert</span>
+          <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-8 tracking-tighter">Meet Your Doctor</h2>
         </div>
 
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col md:flex-row gap-12 items-center bg-slate-50 rounded-[3rem] p-8 md:p-12 overflow-hidden relative"
+            className="flex flex-col lg:flex-row gap-16 lg:items-center bg-blue-50 rounded-[4rem] p-10 md:p-16 relative overflow-hidden shadow-sm border border-blue-100"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-teal-600/5 rounded-full -mr-32 -mt-32"></div>
-            
-            <div className="w-full md:w-2/5">
-              <div className="relative overflow-hidden rounded-[2.5rem] shadow-2xl aspect-[4/5]">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-blue-100 rounded-full -mr-40 -mt-40 blur-3xl opacity-50"></div>
+
+            <div className="w-full lg:w-2/5">
+              <div className="relative overflow-hidden rounded-[3.5rem] shadow-2xl aspect-[4/5] border-[12px] border-white group">
                 <img
                   src={doctor.img}
                   alt={doctor.name}
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
             </div>
-            
-            <div className="w-full md:w-3/5 relative z-10">
-              <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">{doctor.name}</h3>
-              <p className="text-teal-600 font-bold text-lg mb-6">{doctor.qual}</p>
-              
-              <p className="text-slate-600 text-lg leading-relaxed mb-8">
+
+            <div className="w-full lg:w-3/5 relative z-10">
+              <h3 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tighter">{doctor.name}</h3>
+              <p className="text-blue-600 font-extrabold text-xl mb-10 px-6 py-2 bg-white inline-block rounded-full shadow-sm">{doctor.qual}</p>
+
+              <p className="text-xl text-slate-500 font-medium leading-relaxed mb-10">
                 {doctor.bio}
               </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                <div className="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm">
-                  <div className="bg-teal-100 p-2 rounded-lg text-teal-600">
-                    <CheckCircle2 size={20} />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                <div className="flex items-center gap-4 bg-white p-6 rounded-[2rem] shadow-sm border border-blue-50">
+                  <div className="bg-blue-50 p-3 rounded-2xl text-blue-600">
+                    <CheckCircle2 size={24} />
                   </div>
-                  <p className="text-slate-700 font-bold text-sm">{doctor.spec}</p>
+                  <p className="text-slate-900 font-extrabold text-sm">{doctor.spec}</p>
                 </div>
-                <div className="flex items-center gap-3 bg-white p-4 rounded-2xl shadow-sm">
-                  <div className="bg-teal-100 p-2 rounded-lg text-teal-600">
-                    <Clock size={20} />
+                <div className="flex items-center gap-4 bg-white p-6 rounded-[2rem] shadow-sm border border-blue-50">
+                  <div className="bg-blue-50 p-3 rounded-2xl text-blue-600">
+                    <Clock size={24} />
                   </div>
-                  <p className="text-slate-700 font-bold text-sm">{doctor.exp}</p>
+                  <p className="text-slate-900 font-extrabold text-sm">{doctor.exp}</p>
                 </div>
               </div>
-              
+
               <div className="flex gap-4">
-                <a href="#" className="bg-slate-900 text-white p-3 rounded-xl hover:bg-teal-600 transition-colors">
+                <a href="#" className="bg-slate-900 text-white p-4 rounded-2xl hover:bg-blue-600 transition-all active:scale-95 shadow-lg">
                   <Linkedin size={24} />
                 </a>
-                <a href="#" className="bg-slate-900 text-white p-3 rounded-xl hover:bg-teal-600 transition-colors">
+                <a href="#" className="bg-slate-900 text-white p-4 rounded-2xl hover:bg-blue-600 transition-all active:scale-95 shadow-lg">
                   <Twitter size={24} />
                 </a>
               </div>
@@ -549,31 +592,31 @@ const MeetTheDoctor = () => {
 const Testimonials = () => {
   const reviews = [
     {
-      name: 'Priya Sharma',
-      role: 'Business Owner',
-      text: 'The best dental experience I have ever had. Dr. Sameer explained everything clearly and the procedure was completely painless. Highly recommended!',
+      name: 'Aditya Patil',
+      role: 'Local Business Owner',
+      text: 'Dr. Hemangi is an expert. My tooth extraction was completely painless. The clinic is very premium and clean.',
       rating: 5
     },
     {
-      name: 'Vikram Singh',
-      role: 'Software Engineer',
-      text: 'I was always afraid of dentists, but the care here made me feel so comfortable. The clinic is super clean and modern. My root canal was a breeze.',
+      name: 'Rahul More',
+      role: 'Professional',
+      text: 'Best dental clinic in Jalgaon. Very transparent with pricing and treatment options. Highly professional team.',
       rating: 5
     },
     {
-      name: 'Sneha Patil',
-      role: 'Teacher',
-      text: 'Got my dental implants done here. The results are amazing and look so natural. The staff is very polite and professional.',
+      name: 'Sneha Jain',
+      role: 'Student',
+      text: 'Got my whitening done here. Incredible results in just one sitting! Truly a world-class experience.',
       rating: 5
     }
   ];
 
   return (
-    <section id="testimonials" className="py-24 bg-slate-50">
+    <section id="testimonials" className="py-32 bg-blue-50/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-teal-600 font-bold tracking-widest uppercase text-sm mb-4 block">Patient Reviews</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">What Our Patients Say</h2>
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <span className="text-blue-600 font-extrabold tracking-[0.3em] uppercase text-xs mb-6 block">Patient Success</span>
+          <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-8 tracking-tighter">Smile Stories</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -583,23 +626,23 @@ const Testimonials = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 relative"
+              className="bg-white p-12 rounded-[3rem] shadow-sm border border-blue-50 relative hover:shadow-xl transition-shadow duration-500"
             >
-              <div className="flex gap-1 mb-6">
+              <div className="flex gap-1 mb-8">
                 {[...Array(review.rating)].map((_, i) => (
                   <Star key={i} size={20} className="fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
-              <p className="text-slate-600 text-lg italic mb-8 leading-relaxed">
+              <p className="text-slate-500 text-xl font-medium italic mb-10 leading-relaxed">
                 "{review.text}"
               </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center text-teal-600 font-bold text-xl">
+              <div className="flex items-center gap-5">
+                <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 font-black text-2xl">
                   {review.name.charAt(0)}
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900">{review.name}</h4>
-                  <p className="text-slate-500 text-sm">{review.role}</p>
+                  <h4 className="font-black text-slate-900 text-lg tracking-tight">{review.name}</h4>
+                  <p className="text-slate-400 font-bold text-sm tracking-wide">{review.role}</p>
                 </div>
               </div>
             </motion.div>
@@ -612,38 +655,35 @@ const Testimonials = () => {
 
 const Gallery = () => {
   const images = [
-    'https://images.unsplash.com/photo-1445527815219-ecbfec67492e?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1503387762-592dec5832f2?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1581056310664-3d4d74630ff9?auto=format&fit=crop&q=80&w=800'
+    RoomFrontImg,
+    RoomUnderImg,
+    RoomUnder2Img,
   ];
 
   return (
-    <section id="gallery" className="py-24 bg-white">
+    <section id="gallery" className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-teal-600 font-bold tracking-widest uppercase text-sm mb-4 block">Our Gallery</span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Inside Our Clinic</h2>
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <span className="text-blue-600 font-extrabold tracking-[0.3em] uppercase text-xs mb-6 block">Our Clinic</span>
+          <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-8 tracking-tighter">Inside Look</h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
           {images.map((img, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="relative overflow-hidden rounded-2xl aspect-square shadow-md group cursor-pointer"
+              transition={{ delay: i * 0.1 }}
+              className="relative overflow-hidden rounded-[3rem] aspect-square shadow-xl shadow-blue-500/5 group cursor-pointer border-4 border-white"
             >
               <img
                 src={img}
-                alt={`Gallery ${i}`}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                referrerPolicy="no-referrer"
+                alt={`Clinic Gallery ${i}`}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
               />
-              <div className="absolute inset-0 bg-teal-600/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </motion.div>
           ))}
         </div>
@@ -653,169 +693,52 @@ const Gallery = () => {
 };
 
 const Appointment = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [selectedTime, setSelectedTime] = useState("");
-
-  const timeSlots = [
-    "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM",
-    "05:00 PM", "05:30 PM", "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM"
-  ];
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-    // Reset after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
-  };
-
   return (
-    <section id="appointment" className="py-24 bg-slate-900 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-500 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full blur-[120px]"></div>
-      </div>
-
+    <section id="appointment" className="py-32 bg-blue-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-20 items-center">
-          <div className="lg:w-1/2">
-            <span className="text-teal-400 font-bold tracking-widest uppercase text-sm mb-4 block">Get in Touch</span>
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
-              Ready to <span className="text-teal-400">Transform</span> Your Smile?
+        <div className="flex flex-col lg:flex-row gap-20 items-center justify-center text-center">
+          <div className="max-w-3xl">
+            <span className="text-blue-600 font-extrabold tracking-[0.3em] uppercase text-xs mb-6 block">Easy Booking</span>
+            <h2 className="text-5xl md:text-7xl font-black text-slate-900 mb-10 leading-[1.1] tracking-tighter">
+              Book Your <span className="text-blue-600 underline decoration-blue-200 underline-offset-8">Visit</span> On WhatsApp.
             </h2>
-            <p className="text-xl text-slate-300 mb-10 leading-relaxed">
-              Book your appointment today and take the first step towards a healthier, brighter smile. Our team will get back to you within 24 hours.
+            <p className="text-xl text-slate-500 mb-12 leading-relaxed font-medium">
+              We've simplified the booking process. Just click the button below to start a chat with us and schedule your appointment instantly.
             </p>
-            
-            <div className="space-y-8">
-              <div className="flex items-center gap-6">
-                <div className="bg-white/10 p-4 rounded-2xl text-teal-400">
-                  <Phone size={28} />
+
+            <motion.a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-4 bg-[#25D366] text-white px-12 py-6 rounded-[2.5rem] font-black text-2xl shadow-2xl hover:bg-[#128C7E] transition-all"
+            >
+              <WhatsAppIcon size={32} />
+              Book via WhatsApp
+            </motion.a>
+
+            <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div className="flex items-center justify-center gap-6 group bg-white p-8 rounded-[3rem] shadow-sm border border-blue-50">
+                <div className="bg-blue-600 text-white p-4 rounded-2xl shadow-lg">
+                  <Phone size={24} />
                 </div>
-                <div>
-                  <p className="text-slate-400 text-sm uppercase tracking-widest font-bold">Call Us Now</p>
-                  <p className="text-white text-2xl font-bold">{CLINIC_PHONE}</p>
+                <div className="text-left">
+                  <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] font-black mb-1">Call Us</p>
+                  <p className="text-slate-900 text-lg font-black">{CLINIC_PHONE}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-6">
-                <div className="bg-white/10 p-4 rounded-2xl text-teal-400">
-                  <Mail size={28} />
+              <div className="flex items-center justify-center gap-6 group bg-white p-8 rounded-[3rem] shadow-sm border border-blue-50">
+                <div className="bg-slate-900 text-white p-4 rounded-2xl shadow-lg">
+                  <Mail size={24} />
                 </div>
-                <div>
-                  <p className="text-slate-400 text-sm uppercase tracking-widest font-bold">Email Us</p>
-                  <p className="text-white text-2xl font-bold">info@palshikardental.com</p>
+                <div className="text-left">
+                  <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] font-black mb-1">Email Us</p>
+                  <p className="text-slate-900 text-lg font-black truncate max-w-[150px]">{CLINIC_EMAIL}</p>
                 </div>
               </div>
             </div>
           </div>
-
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:w-1/2 w-full"
-          >
-            <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl min-h-[700px] flex flex-col">
-              <AnimatePresence mode="wait">
-                {!isSubmitted ? (
-                  <motion.div
-                    key="form"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                  >
-                    <h3 className="text-3xl font-bold text-slate-900 mb-8">Book Appointment</h3>
-                    <form className="space-y-6" onSubmit={handleSubmit}>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-sm font-bold text-slate-700 mb-2">Full Name</label>
-                          <input
-                            required
-                            type="text"
-                            placeholder="John Doe"
-                            className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-bold text-slate-700 mb-2">Phone Number</label>
-                          <input
-                            required
-                            type="tel"
-                            placeholder="+91 00000 00000"
-                            className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all"
-                          />
-                        </div>
-                      </div>
-                      
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                          <label className="block text-sm font-bold text-slate-700 mb-2 flex items-center gap-2">
-                            <Calendar size={16} className="text-teal-600" /> Preferred Date
-                          </label>
-                          <input
-                            required
-                            type="date"
-                            className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-bold text-slate-700 mb-2 flex items-center gap-2">
-                            <Clock size={16} className="text-teal-600" /> Preferred Time
-                          </label>
-                          <select
-                            required
-                            value={selectedTime}
-                            onChange={(e) => setSelectedTime(e.target.value)}
-                            className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all appearance-none"
-                          >
-                            <option value="">Select Time</option>
-                            {timeSlots.map(time => (
-                              <option key={time} value={time}>{time}</option>
-                            ))}
-                          </select>
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-2">Message (Optional)</label>
-                        <textarea
-                          rows={3}
-                          placeholder="Tell us about your dental concern..."
-                          className="w-full px-6 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all resize-none"
-                        ></textarea>
-                      </div>
-                      <button
-                        type="submit"
-                        className="w-full bg-teal-600 text-white py-5 rounded-2xl font-bold text-lg hover:bg-teal-700 transition-all shadow-xl shadow-teal-100 flex items-center justify-center gap-3"
-                      >
-                        Confirm Appointment <ChevronRight size={20} />
-                      </button>
-                    </form>
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="success"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="flex flex-col items-center justify-center h-full py-20 text-center"
-                  >
-                    <div className="w-24 h-24 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center mb-8">
-                      <CheckCircle2 size={48} />
-                    </div>
-                    <h3 className="text-3xl font-bold text-slate-900 mb-4">Booking Successful!</h3>
-                    <p className="text-slate-600 text-lg mb-8">
-                      Thank you for choosing Om Dental Clinic. Our team will contact you shortly to confirm your slot.
-                    </p>
-                    <button
-                      onClick={() => setIsSubmitted(false)}
-                      className="text-teal-600 font-bold hover:underline"
-                    >
-                      Book another appointment
-                    </button>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
@@ -824,73 +747,60 @@ const Appointment = () => {
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-24 bg-white">
+    <section id="contact" className="py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
-            <span className="text-teal-600 font-bold tracking-widest uppercase text-sm mb-4 block">Contact Us</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-10">Visit Our Clinic</h2>
-            
-            <div className="space-y-10">
-              <div className="flex items-start gap-6">
-                <div className="bg-teal-50 p-4 rounded-2xl text-teal-600">
-                  <MapPin size={28} />
+            <span className="text-blue-600 font-extrabold tracking-[0.3em] uppercase text-xs mb-6 block">Location</span>
+            <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-12 tracking-tighter text-balance">Visit Our <br /> Clinic In Jalgaon.</h2>
+
+            <div className="space-y-12">
+              <div className="flex items-start gap-8">
+                <div className="bg-blue-50 p-5 rounded-[2rem] text-blue-600 shadow-sm">
+                  <MapPin size={32} />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-slate-900 mb-2">Address</h4>
-                  <p className="text-slate-600 text-lg leading-relaxed">
+                  <h4 className="text-2xl font-black text-slate-900 mb-3 tracking-tight">Address</h4>
+                  <p className="text-slate-500 text-xl leading-relaxed font-medium">
                     {CLINIC_ADDRESS}
                   </p>
-                  <a 
-                    href={MAP_LINK} 
-                    target="_blank" 
+                  <a
+                    href={MAP_LINK}
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 mt-4 text-teal-600 font-bold hover:underline"
+                    className="inline-flex items-center gap-2 mt-6 text-blue-600 font-black hover:gap-4 transition-all tracking-tight"
                   >
-                    View on Google Maps <ChevronRight size={18} />
+                    Get Directions <ArrowRight size={20} />
                   </a>
                 </div>
               </div>
-              <div className="flex items-start gap-6">
-                <div className="bg-teal-50 p-4 rounded-2xl text-teal-600">
-                  <Clock size={28} />
+              <div className="flex items-start gap-8">
+                <div className="bg-blue-50 p-5 rounded-[2rem] text-blue-600 shadow-sm">
+                  <Clock size={32} />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-slate-900 mb-2">Working Hours</h4>
-                  <p className="text-slate-600 text-lg">Mon - Sat: 10:00 AM - 01:00 PM</p>
-                  <p className="text-slate-600 text-lg">Evening: 05:00 PM - 08:00 PM</p>
-                  <p className="text-slate-600 text-lg">Sunday: Closed</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-6">
-                <div className="bg-teal-50 p-4 rounded-2xl text-teal-600">
-                  <Phone size={28} />
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold text-slate-900 mb-2">Phone</h4>
-                  <p className="text-slate-600 text-lg">{CLINIC_PHONE}</p>
+                  <h4 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">Clinic Hours</h4>
+                  <div className="space-y-2">
+                    <p className="text-slate-500 text-xl font-medium"><span className="text-blue-600 font-black">Mon - Sat:</span> 09:30 AM - 01:30 PM</p>
+                    <p className="text-slate-500 text-xl font-medium ml-[6.5rem]">05:30 PM - 09:30 PM</p>
+                    <p className="text-slate-500 text-xl font-medium pt-2"><span className="text-slate-400 font-black">Sunday:</span> 10:00 AM - 02:00 PM (Emergency Only)</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="h-[500px] rounded-[2.5rem] overflow-hidden shadow-xl border border-slate-100 relative group">
-            <img 
-              src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb?auto=format&fit=crop&q=80&w=1000" 
-              alt="Clinic Location"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-slate-900/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-              <a 
-                href={MAP_LINK} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-white text-slate-900 px-8 py-4 rounded-full font-bold shadow-2xl flex items-center gap-2"
-              >
-                <MapPin size={20} className="text-teal-600" /> Open in Google Maps
-              </a>
-            </div>
+          <div className="h-[600px] rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white relative group bg-blue-50">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.104443422671!2d75.5621453752533!3d21.006930880637736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd90fb4f2f65f17%3A0x8f7d9c6c40e5362!2sSaint%20Joseph%20Convent%20School!5e0!3m2!1sen!2sin!4v1741271821000!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Clinic Location Map"
+            ></iframe>
           </div>
         </div>
       </div>
@@ -900,75 +810,40 @@ const Contact = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-50 pt-24 pb-12 border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="lg:col-span-1">
-            <span className="text-2xl font-bold tracking-tight text-teal-600 mb-6 block">
-              Om <span className="text-slate-800">Dental Clinic</span>
-            </span>
-            <p className="text-slate-500 leading-relaxed mb-8">
-              Providing world-class dental care with a personal touch. Your smile is our greatest achievement.
-            </p>
-            <div className="flex gap-4">
-              {[Facebook, Instagram, Twitter, Linkedin].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 bg-white border border-slate-200 rounded-full flex items-center justify-center text-slate-600 hover:bg-teal-600 hover:text-white hover:border-teal-600 transition-all">
-                  <Icon size={18} />
-                </a>
-              ))}
-            </div>
+    <footer className="bg-white py-16 border-t border-blue-50 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="flex items-center justify-center mb-10">
+          <div className="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center mr-3">
+            <Smile size={24} />
           </div>
+          <span className="text-2xl font-black tracking-tighter text-blue-600">
+            OM<span className="text-slate-900">DENTAL</span>
+          </span>
+        </div>
 
-          <div>
-            <h4 className="text-lg font-bold text-slate-900 mb-8">Quick Links</h4>
-            <ul className="space-y-4">
-              {['Home', 'About Us', 'Services', 'Meet the Doctor', 'Testimonials', 'Gallery', 'Contact'].map((link) => (
-                <li key={link}>
-                  <a href={`#${link.toLowerCase().replace(' ', '')}`} className="text-slate-500 hover:text-teal-600 transition-colors">
-                    {link}
-                  </a>
-                </li>
-              ))}
-            </ul>
+        <p className="text-slate-400 font-medium max-w-xl mx-auto mb-10">
+          Providing high-quality dental care with a gentle touch. Your healthy smile is our pride and priority.
+        </p>
+
+        <div className="flex flex-col md:flex-row items-center justify-center gap-10 mb-10">
+          <div className="flex items-center gap-3">
+            <Phone size={20} className="text-blue-600" />
+            <span className="text-slate-900 font-black">{CLINIC_PHONE}</span>
           </div>
-
-          <div>
-            <h4 className="text-lg font-bold text-slate-900 mb-8">Our Services</h4>
-            <ul className="space-y-4">
-              {['General Dentistry', 'Teeth Whitening', 'Dental Implants', 'Root Canal', 'Orthodontics', 'Cosmetic Dentistry'].map((service) => (
-                <li key={service}>
-                  <a href="#services" className="text-slate-500 hover:text-teal-600 transition-colors">
-                    {service}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          <div className="flex items-center gap-3">
+            <Mail size={20} className="text-blue-600" />
+            <span className="text-slate-900 font-black">{CLINIC_EMAIL}</span>
           </div>
-
-          <div>
-            <h4 className="text-lg font-bold text-slate-900 mb-8">Newsletter</h4>
-            <p className="text-slate-500 mb-6">Subscribe to get dental health tips and offers.</p>
-            <form className="relative">
-              <input
-                type="email"
-                placeholder="Email Address"
-                className="w-full px-6 py-4 bg-white border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-teal-500"
-              />
-              <button className="absolute right-2 top-2 bg-teal-600 text-white p-2 rounded-xl hover:bg-teal-700 transition-all">
-                <ChevronRight size={24} />
-              </button>
-            </form>
+          <div className="flex items-center gap-3">
+            <MapPin size={20} className="text-blue-600" />
+            <span className="text-slate-400 font-bold text-sm tracking-tight">Jalgaon, Maharashtra</span>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-slate-200 flex flex-col md:row items-center justify-between gap-4">
-          <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} Om Dental Clinic. All rights reserved.
+        <div className="pt-10 border-t border-slate-100 flex flex-col items-center gap-4">
+          <p className="text-slate-300 text-sm font-bold">
+            © {new Date().getFullYear()} Om Dental Clinic. All Rights Reserved.
           </p>
-          <div className="flex gap-8 text-sm text-slate-400">
-            <a href="#" className="hover:text-teal-600">Privacy Policy</a>
-            <a href="#" className="hover:text-teal-600">Terms of Service</a>
-          </div>
         </div>
       </div>
     </footer>
@@ -979,7 +854,7 @@ const Footer = () => {
 
 export default function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Navbar />
       <Hero />
       <About />
